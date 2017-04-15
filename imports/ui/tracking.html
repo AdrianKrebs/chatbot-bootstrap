@@ -1,0 +1,19 @@
+<template name="tracking">
+  <div class="tracking-container">
+    <div class="chat-list">
+      {{#each chats}}
+        <a class="chat-list-entry {{#if chatIsSelected _id}}selected{{/if}}" data-id="{{_id}}">
+          <span>{{moFormat createdAt 'HH:mm DD.MM.YYYY'}} {{ip}}</span>
+        </a>
+      {{/each}}
+    </div>
+    <div class="chat-data">
+      <pre>{{chat}}</pre>
+    </div>
+    <div class="chat-messages chat">
+      {{#each messages}}
+        {{> message}}
+      {{/each}}
+    </div>
+  </div>
+</template>

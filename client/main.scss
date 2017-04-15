@@ -1,0 +1,23 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body, input, p, h1, h2, hr {
+  margin: 0;
+  padding: 0
+}
+
+/* CSS declarations go here */
+body {
+  font-family: MobiliarRealist, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}
+pre {
+  font-size: 10px;
+  line-height: 12px;
+}

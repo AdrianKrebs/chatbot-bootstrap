@@ -1,0 +1,35 @@
+<template name="text">
+  <form class="new-message-form">
+    <div class="new-message">
+      <input type="text" name="text" autocomplete="off" placeholder="Nachricht schreiben" id="messageBox"/>
+      <div class="send"></div>
+    </div>
+  </form>
+</template>
+
+<template name="buttons">
+  {{#each this}}
+    {{#if this.title}}
+      <a class="js-send button" data-module="{{ this.module }}">{{ this.title }}</a>
+    {{/if}}
+  {{/each}}
+</template>
+
+<template name="localization">
+  <button id="sendLocation">Ortungsdaten Senden</button>
+</template>
+
+<template name="rating">
+  <div class="rating">
+    Bewertung Pannenhelfer<br>
+    <span id="1">☆</span>
+    <span id="2">☆</span>
+    <span id="3">☆</span>
+    <span id="4">☆</span>
+    <span id="5">☆</span>
+  </div>
+  <form class="new-message">
+    <input type="text" name="text" autocomplete="off" placeholder="Schreibe eine Nachricht" id="messageBox"/>
+    <div class="send"></div>
+  </form>
+</template>

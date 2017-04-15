@@ -1,0 +1,32 @@
+@import 'sass-flexbox.scss';
+
+.tracking-container {
+  @extend %display-flex;
+  & > div {
+    padding: 5px;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .chat-list {
+    min-width: 400px;
+    .chat-list-entry {
+      display: block;
+      padding: 5px;
+      cursor: pointer;
+      &.selected {
+        background-color: rgb(238, 238, 238);
+      }
+      .title {
+        font-size: 18px;
+        font-weight: 600px;
+      }
+    }
+  }
+  .chat-data, .chat-messages {
+    @include flex(1, 1, 0);
+  }
+  .chat-data {
+    overflow-x: scroll;
+  }
+}
