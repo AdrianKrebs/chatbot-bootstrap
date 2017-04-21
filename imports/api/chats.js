@@ -5,9 +5,6 @@ import { _ } from 'lodash';
 export const Chats = new Mongo.Collection('chat');
 
 if (Meteor.isServer) {
-  Meteor.publish('chats', function tasksPublication() {
-    return Chats.find({});
-  });
 
   Meteor.methods({
     'chats.insert'() {

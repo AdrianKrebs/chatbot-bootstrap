@@ -6,12 +6,12 @@ import {HTTP} from 'meteor/http'
 
 import {Messages} from '../api/messages.js';
 import {Chats} from '../api/chats.js';
-import { _ } from 'lodash';
+import {_} from 'lodash';
 
 import './chat.html';
 
 var scrollBottom = function () {
-  window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 Template.chat.onCreated(function () {
@@ -19,11 +19,11 @@ Template.chat.onCreated(function () {
     Meteor.subscribe('messages', function () {
         var messages = Messages.find().observe({
             added: function (res) {
-              [5, 25, 75, 150].map( seconds => {
-                setTimeout(function () {
-                    scrollBottom();
-                }, seconds);
-              })
+                [5, 25, 75, 150].map(seconds => {
+                    setTimeout(function () {
+                        scrollBottom();
+                    }, seconds);
+                })
             },
         })
     });
@@ -49,17 +49,28 @@ Template.chat.helpers({
         return values;
     },
     inputTemplate () {
-      const chatId = FlowRouter.getParam("chatId");
-      let lastMessage = Messages.findOne({chatId: chatId}, {sort: {createdAt: -1, limit: 1}});
-      //if (lastMessage) {
-        //let quickReplies = _.get(lastMessage, 'intent.quickReplies')
-       // if (quickReplies && quickReplies.length > 0 && quickReplies[0] != "") {
-       //      quickReplies = quickReplies.map( reply => {
-       //        return {title: reply.title, module: lastMessage.intent.module};
-       //      });
-            return {template: 'buttons', data: [{title: "TEST", module: 444444},{title: "Second", module: 444444}]};
-      //  }
-    //  }
+        const chatId = FlowRouter.getParam("chatId");
+        let lastMessage = Messages.findOne({chatId: chatId}, {sort: {createdAt: -1, limit: 1}});
+
+        if (lastMessage === "show buttons") { // example of how to use buttons in your template
+            return {
+                template: 'buttons',
+                data: [
+                    {
+                        title: "Option A"
+                    },
+                    {
+                        title: "Option B"
+                    }
+                ]
+            };
+        }
+
+        return {
+            template: "text",
+            data: ""
+        };
+
     }
 });
 
@@ -75,13 +86,19 @@ Template.chat.events({
     },
 
     'submit .new-message-form, click .new-message .send'(event) {
-      event.preventDefault();
+        event.preventDefault();
 
-      const text = $("#messageBox").val();
-      const chatId = FlowRouter.getParam("chatId");
+        const text = $("#messageBox").val();
+        const chatId = FlowRouter.getParam("chatId");
 
-      Meteor.call('messages.insert', text, chatId, 'user');
+        Meteor.call('messages.insert', text, chatId, 'user');
 
-      $("#messageBox").val('');
+        $(".typing").show();
+        Meteor.setTimeout(function () {
+            Meteor.call('messages.callApiAi', text, chatId);
+            $(".typing").hide();
+        }, 1500);
+
+        $("#messageBox").val('');
     }
 });

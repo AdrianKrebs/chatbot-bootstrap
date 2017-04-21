@@ -2,7 +2,9 @@ import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
 import {check} from 'meteor/check';
 import {HTTP} from 'meteor/http';
-import {Chats} from './chats.js';
+const apiai = require('apiai');
+
+
 
 const motionAiRequest = function (msg, session, callback) {
     HTTP.get('https://api.motion.ai/messageBot', {
@@ -20,12 +22,8 @@ const motionAiRequest = function (msg, session, callback) {
 export const Messages = new Mongo.Collection('message');
 
 if (Meteor.isServer) {
-    Meteor.publish('messages', function tasksPublication() {
-        return Messages.find({});
-    });
-}
-
-if (Meteor.isServer) {
+    const API_AI_CLIENT_ACCESS_TOKEN = Meteor.settings.apiAiClientAccessToken; // your api key
+    const api = apiai(API_AI_CLIENT_ACCESS_TOKEN);
     Meteor.methods({
         'messages.insert'(text, chatId, user, intent) {
             Messages.insert({
@@ -36,13 +34,27 @@ if (Meteor.isServer) {
                 createdAt: new Date()
             });
         },
-        'messages.callApiAI'(text, chatId) {
+        'messages.callMotionAi'(text, chatId) {
+            motionAiRequest(text, chatId, (error, response) => {
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+
+                response.data.botResponse.split("::next::").map(responsePart => {
+                    Meteor.call('messages.insert', responsePart, chatId, 'bot', response.data);
+                });
+
+
+            });
+        },
+        'messages.callApiAi'(text, chatId) {
             let options = {
                 sessionId: chatId
             };
-            let request = app.textRequest(text, options);
+            let request = api.textRequest(text, options);
 
-            request.on('response', Meteor.bindEnvironment(function (response, errror) {
+            request.on('response', Meteor.bindEnvironment(function (response) {
                 console.log(response);
                 Meteor.call('messages.insert', response.result.fulfillment.speech, chatId, 'bot', response.result.metadata.intentName);
 
@@ -53,9 +65,7 @@ if (Meteor.isServer) {
             request.end();
         },
         'messages.remove'(messageId) {
-            check(messageId, String);
-            const message = Message.findOne(messageId);
-            Messages.remove(taskId);
+            //NOOP
         }
     });
 }
