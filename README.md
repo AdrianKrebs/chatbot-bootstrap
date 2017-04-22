@@ -4,9 +4,9 @@
 ## What is it?
 
 A Chatbot Bootsrap-Kit based on [Meteor](https://github.com/meteor/meteor) and [MongoDB](https://www.mongodb.com). 
-We have seen a lot of platforms for chatbots, but what about if you just want your bot running on your website?
+We have seen a lot of platforms and frameworks for chatbots, but what about if you just want to run a bot on your website?
 This is exactly what this project is for.
-It's a simple web-project which is pretty easy to get it up and running. It currently offers API interfaces for API.ai and motion.ai. 
+It's a simple web-project which is pretty easy to get up and running. It currently offers API interfaces for API.ai and motion.ai. 
 In addition it has a built in tracking view where you can see all recent conversations.
 
 ![bot conversation](conversation.png)
@@ -55,7 +55,7 @@ just go to `localhost:3000/tracking`
 
 To deploy your bot on heroku I suggest using the [Meteor Buildpack Horse](https://github.com/AdmitHub/meteor-buildpack-horse)
 
-##Contributing
+## Contributing
 
 Please fork this repository and contribute back using pull requests.
 
