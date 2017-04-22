@@ -31,7 +31,8 @@ In addition it has a built in tracking view where you can see all recent convers
 
 ### NLP Engines
 To make a chatbot work you need to connect to a NLP engine. I highly recommend the usage of API.ai:
-- API.ai tutorial: https://docs.api.ai/docs/profile-bot-example-agent
+- [API.ai tutorial](https://docs.api.ai/docs/profile-bot-example-agent)
+- [API.ai floral shop sample (used for the screenshots)](https://docs.api.ai/docs/guidelines-contexts)
 
 For very basic dialog structures you could even create your own .json file containing the conversation tree.
 
