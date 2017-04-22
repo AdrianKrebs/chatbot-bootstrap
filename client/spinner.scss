@@ -24,7 +24,7 @@
   width: 50px;
   position: absolute;
   border-radius: 50%;
-  border: 6px solid lighten($mobirot, 40%);
+  border: 6px solid lighten(#00897b, 40%);
   border-bottom-color: rgba(0,0,0,0);
   -webkit-animation: mul5circle1anim 1.5s infinite linear;
   animation: mul5circle1anim 1.5s infinite linear;
@@ -90,7 +90,7 @@
   width: 18px;
   position: absolute;
   border-radius: 50%;
-  border: 6px solid $mobirot;
+  border: 6px solid #00897b;
   border-right-color: rgba(0,0,0,0);
   -webkit-animation: mul5circle3anim 1s infinite linear;
   animation: mul5circle3anim 1s infinite linear;
@@ -156,7 +156,7 @@
   width: 82px;
   position: absolute;
   border-radius: 50%;
-  border: 6px solid darken($mobirot, 10);
+  border: 6px solid darken(#00897b, 10);
   border-right-color: rgba(0,0,0,0);
   -webkit-animation: mul5circle5anim 8s infinite linear;
   animation: mul5circle5anim 8s infinite linear;

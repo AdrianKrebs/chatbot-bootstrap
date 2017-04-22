@@ -1,12 +1,13 @@
 <template name="chat">
-  <div class="chat" id="chatWindow">
-    <div class="messages">
-      {{#each messages}}
-        {{> message}}
-      {{/each}}
+    <div class="chat" id="chatWindow">
+        <div class="messages">
+            {{#each messages}}
+            {{> message}}
+            {{/each}}
+            <p class="typing"><span>.</span><span>.</span><span>.</span></p>
+        </div>
+        <div class="option_button">
+            {{> Template.dynamic template=inputTemplate.template data=inputTemplate.data}}
+        </div>
     </div>
-    <div class="option_button">
-      {{> Template.dynamic template=inputTemplate.template data=inputTemplate.data}}
-    </div>
-  </div>
 </template>

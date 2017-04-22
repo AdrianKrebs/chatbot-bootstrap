@@ -30,8 +30,10 @@ In addition it has a built in tracking view where you can see all recent convers
 4. go to `localhost:3000` and start chatting :)
 
 ### NLP Engines
-To make a chatbot work you need to connect to a NLP Engine. I highly recommend the usage of API.ai:
+To make a chatbot work you need to connect to a NLP engine. I highly recommend the usage of API.ai:
 - API.ai tutorial: https://docs.api.ai/docs/profile-bot-example-agent
+
+For very basic dialog structures you could even create your own .json file containing the conversation tree.
 
 ### Input Templates
 By default the text input is enabled. You can customize the input template according to your needs.
@@ -62,4 +64,4 @@ Any contributions are welcomed and appreciated.
 I hope this helps you in building your next chatbot.
 
 
-Follow me here on Github or on Twitter [@adrian_krebs](https://twitter.com/krebs_adrian) to stay up-to-date.
+Follow me here on Github or on Twitter [@adrian_krebs](https://twitter.com/krebs_adrian) to stay up-to-date about chatbots and their rapid evolving technologies like AI, machine learning and natural language processing.
