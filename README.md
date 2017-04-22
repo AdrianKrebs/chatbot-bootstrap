@@ -9,6 +9,8 @@ This is exactly what this project is for.
 It's a simple web-project which is pretty easy to get up and running. It currently offers API interfaces for API.ai and motion.ai. 
 In addition it has a built in tracking view where you can see all recent conversations.
 
+Try out my personal implementation here: http://adriankrebs.ch
+
 ![bot conversation](conversation.png)
 
 ---
@@ -22,7 +24,7 @@ In addition it has a built in tracking view where you can see all recent convers
 ---
 
 
-##Getting started
+## Getting started
 
 1. Add NLP API-keys to the `settings.json` file 
 2. Customize your dialog with buttons, avatar or other styling
@@ -66,3 +68,7 @@ I hope this helps you in building your next chatbot.
 
 
 Follow me here on Github or on Twitter [@adrian_krebs](https://twitter.com/krebs_adrian) to stay up-to-date about chatbots and their rapid evolving technologies like AI, machine learning and natural language processing.
+
+## License
+
+MIT License (MIT). Copyright (c) 2017 Adrian Krebs.
