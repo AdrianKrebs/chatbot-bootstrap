@@ -12,14 +12,16 @@ import './chat.html';
 
 var scrollBottom = function () {
     window.scrollTo(0, document.body.scrollHeight);
-}
+};
+
+const SHOW_BUTTONS_TEST_STRING = "show buttons";
 
 Template.chat.onCreated(function () {
     $('.spinner').hide();
     Meteor.subscribe('messages', function () {
         var messages = Messages.find().observe({
             added: function (res) {
-                [5, 25, 75, 150].map(seconds => {
+                [5, 25, 75, 150, 250, 500, 1000].map(seconds => {
                     setTimeout(function () {
                         scrollBottom();
                     }, seconds);
@@ -52,7 +54,7 @@ Template.chat.helpers({
         const chatId = FlowRouter.getParam("chatId");
         let lastMessage = Messages.findOne({chatId: chatId}, {sort: {createdAt: -1, limit: 1}});
 
-        if (lastMessage === "show buttons") { // example of how to use buttons in your template
+        if (lastMessage.text === SHOW_BUTTONS_TEST_STRING) { // example of how to use buttons in your template
             return {
                 template: 'buttons',
                 data: [
@@ -81,7 +83,7 @@ Template.chat.events({
         const chatId = FlowRouter.getParam("chatId");
 
         Meteor.call('messages.insert', text, chatId, 'user');
-
+        Meteor.call('messages.callApiAi', text, chatId);
         scrollBottom();
     },
 
@@ -93,11 +95,14 @@ Template.chat.events({
 
         Meteor.call('messages.insert', text, chatId, 'user');
 
-        $(".typing").show();
-        Meteor.setTimeout(function () {
-            Meteor.call('messages.callApiAi', text, chatId);
-            $(".typing").hide();
-        }, 1500);
+
+        if (text !== SHOW_BUTTONS_TEST_STRING) {
+            $(".typing").show();
+            Meteor.setTimeout(function () {
+                Meteor.call('messages.callApiAi', text, chatId);
+                $(".typing").hide();
+            }, 1500);
+        }
 
         $("#messageBox").val('');
     }

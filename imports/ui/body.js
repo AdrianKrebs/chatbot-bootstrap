@@ -19,15 +19,7 @@ Template.body.onCreated(function bodyOnCreated() {
 });
 
 Template.body.helpers({
-  statusMessage() {
-    const chatId = FlowRouter.getParam("chatId");
-    let chat = Chats.findOne({_id: chatId});
-    if (chat) {
-      return Conversation['steps'][chat.step].status;
-    } else {
-      return '';
-    }
-  }
+
 });
 
 Template.registerHelper('formatDate', function(date) {

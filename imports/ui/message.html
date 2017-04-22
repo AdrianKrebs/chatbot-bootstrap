@@ -1,6 +1,6 @@
 <template name="message">
     <div class="bubble_{{user}}">
-      {{#if userIsMona user}}
+      {{#if userIsBot user}}
         <div class="avatar">
           <img src="/images/sample_avatar.png" alt="" class="img_bot "/>
         </div>
@@ -10,7 +10,7 @@
           <img src="{{image}}" class="message_image" />
         {{/if}}
         <p >
-          {{{ replaceImages text }}}<br>
+          {{{ text }}}<br>
         </p>
       </div>
     </div>

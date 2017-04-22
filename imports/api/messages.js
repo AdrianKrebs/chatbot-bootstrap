@@ -19,6 +19,13 @@ const motionAiRequest = function (msg, session, callback) {
     });
 };
 
+if (Meteor.isServer) {
+    Meteor.publish('messages', function tasksPublication() {
+        return Messages.find({});
+    });
+}
+
+
 export const Messages = new Mongo.Collection('message');
 
 if (Meteor.isServer) {
