@@ -4,7 +4,7 @@
 ## What is it?
 
 A Chatbot Bootsrap-Kit based on [Meteor](https://github.com/meteor/meteor) and [MongoDB](https://www.mongodb.com). 
-We have seen a lot of platforms and frameworks for chatbots, but what about if you just want to run a bot on your website?
+We have seen a lot of bot platforms and frameworks right? But what about a fully customizable, transparent and open source chatbot platform? 
 This is exactly what this project is for.
 It's a simple web-project which is pretty easy to get up and running. It currently offers API interfaces for API.ai and motion.ai. 
 In addition it has a built in tracking view where you can see all recent conversations.
