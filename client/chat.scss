@@ -25,6 +25,7 @@
     color: #000;
     margin: 0;
     padding: 10px;
+    word-break: break-word;
   }
 
   @media screen and (max-width: 480px) {
@@ -33,57 +34,84 @@
       line-height: 22px;
     }
   }
-
-  .bubble_bot {
+  .message-wrapper {
     @extend %display-flex;
     margin-bottom: 20px;
-    .avatar {
-      @extend %align-self-flex-end;
-      width: 45px;
-      height: 40px;
-      .img_bot {
-        display: block;
-        width: 40px;
-        height: 40px;
-        border-radius: 35px;
-        background-color: #b69393;
-      }
-    }
-    @media screen and (max-width: 480px) {
-      .avatar {
-        width: 35px;
-        height: 30px;
-        .img_bot {
-          width: 30px;
-          height: 30px;
-        }
-      }
-    }
 
     .text {
-      @include flex(1, 1, 0);
-      @extend %align-self-flex-end;
+      @include flex(1, 1, 1);
+      position: relative;
       background-color: rgb(238, 238, 238);
-      border-radius: 15px 15px 15px 0;
       .message_image {
         display: block;
         border-radius: 15px 15px 0 0;
         max-width: 610px;
         width: 100%;
       }
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
     }
-  }
-  .bubble_user {
-    @extend %display-flex;
-    @extend %justify-content-flex-end;
-    margin-bottom: 20px;
-    p {
-      color: black;
+
+    &.bot {
+      .avatar {
+        @extend %align-self-flex-start;
+        width: 45px;
+        height: 40px;
+        .img_bot {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 35px;
+          background-color: #bfd5ec;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        .avatar {
+          width: 35px;
+          height: 30px;
+          .img_bot {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+
+      .text {
+        @extend %align-self-flex-start;
+        background-color: rgb(238, 238, 238);
+        text-align: left;
+
+        &:before {
+          border-width: 0 15px 19px 0;
+          border-color: transparent #f5f1ee transparent transparent;
+          position: absolute;
+          top: 0;
+          left: -12px;
+        }
+      }
+    }
+    &.user {
+      @extend %justify-content-flex-end;
+
       text-align: right;
-      margin: 0;
-      background-color: #dcf8c6;
-      border-radius: 15px 15px 0px 15px;
+      .text {
+        @extend %justify-content-flex-end;
+        float: right;
+        background-color: #dcf8c6;
+        &:before {
+          border-width: 15px 15px 0 0;
+          border-color: #dcf8c6 transparent transparent transparent;
+          position: absolute;
+          top: 0;
+          right: -12px;
+        }
+      }
     }
+
   }
   a.button {
     background: #f5f1ee;
@@ -115,7 +143,7 @@
     background-color: #eeeeee;
 
     input {
-      @include flex(1, 1, 0);
+      flex:1;
       padding: 10px;
       outline: none;
       border: none;

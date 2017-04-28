@@ -1,17 +1,18 @@
 <template name="message">
-    <div class="bubble_{{user}}">
-      {{#if userIsBot user}}
+    <div class="message-wrapper {{user}}">
+        {{#if userIsBot user}}
         <div class="avatar">
-          <img src="/images/sample_avatar.png" alt="" class="img_bot "/>
+            <img src="/images/sample_avatar.png" alt="" class="img_bot "/>
         </div>
-      {{/if}}
-      <div class="text">
-        {{#if image}}
-          <img src="{{image}}" class="message_image" />
         {{/if}}
-        <p >
-          {{{ text }}}<br>
-        </p>
-      </div>
+        <div class="text">
+            {{#if image}}
+            <img src="{{image}}" class="message_image"/>
+            {{/if}}
+            <p>
+                {{{ text }}}<br>
+                <span class="time">{{ formatDate createdAt }}</span>
+            </p>
+        </div>
     </div>
 </template>

@@ -71,4 +71,4 @@ Follow me here on Github or on Twitter [@adrian_krebs](https://twitter.com/krebs
 
 ## License
 
-MIT License (MIT). Copyright (c) 2017 Adrian Krebs.
+MIT License (MIT).
