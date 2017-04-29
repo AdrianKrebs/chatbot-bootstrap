@@ -18,6 +18,7 @@ const SHOW_BUTTONS_TEST_STRING = "show buttons";
 
 Template.chat.onCreated(function () {
     $('.spinner').hide();
+    $('header').show();
     Meteor.subscribe('messages', function () {
         var messages = Messages.find().observe({
             added: function (res) {

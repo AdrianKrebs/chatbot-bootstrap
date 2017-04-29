@@ -136,6 +136,16 @@
     order: $order;
 }
 
+/*
+    Flex grow
+ */
+@mixin flex-grow($grow: 0) {
+    -webkit-flex-grow: $grow;
+    -webkit-box-flex: $grow;
+    -moz-flex-grow: $grow;
+    -ms-flex-positive: $grow;
+    flex-grow: $grow;
+}
 
 /*
     Flex shrink
@@ -162,6 +172,7 @@
     Flex
  */
 @mixin flex($grow: 0, $shrink: 1, $basis: auto) {
+    @include flex-grow($grow);
     @include flex-shrink($shrink);
     @include flex-basis($basis);
 }

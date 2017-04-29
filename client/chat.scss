@@ -5,9 +5,10 @@
   margin: 0 auto;
   max-width: 400px;
   padding: 12px;
+  margin-top: 3em;
 
   .messages {
-    @include flex(1, 1, 0);
+    @include flex(0, 1, 1);
   }
 
   .option_button {
@@ -39,14 +40,21 @@
     margin-bottom: 20px;
 
     .text {
-      @include flex(1, 1, 1);
+      @include flex(0, 1, 1);
       position: relative;
       background-color: rgb(238, 238, 238);
+
+      border-radius: 5px;
       .message_image {
         display: block;
         border-radius: 15px 15px 0 0;
         max-width: 610px;
         width: 100%;
+      }
+      .time {
+        float: right;
+        font-size: 0.8em;
+        color: $darkgrey;
       }
       &:before {
         content: '';
@@ -61,6 +69,7 @@
         @extend %align-self-flex-start;
         width: 45px;
         height: 40px;
+        margin-right: 5px;
         .img_bot {
           display: block;
           width: 40px;
@@ -83,6 +92,7 @@
       .text {
         @extend %align-self-flex-start;
         background-color: rgb(238, 238, 238);
+        box-shadow: 1px 1px 1px 0px rgba(50, 50, 50, 0.3);
         text-align: left;
 
         &:before {
@@ -90,7 +100,7 @@
           border-color: transparent #f5f1ee transparent transparent;
           position: absolute;
           top: 0;
-          left: -12px;
+          left: -10px;
         }
       }
     }
@@ -102,12 +112,13 @@
         @extend %justify-content-flex-end;
         float: right;
         background-color: #dcf8c6;
+        box-shadow: -1px 2px 1px 0px  rgba(50, 50, 50, 0.3);
         &:before {
           border-width: 15px 15px 0 0;
           border-color: #dcf8c6 transparent transparent transparent;
           position: absolute;
           top: 0;
-          right: -12px;
+          right: -10px;
         }
       }
     }
@@ -147,7 +158,7 @@
       padding: 10px;
       outline: none;
       border: none;
-      font-size: 16px;
+      font-size: 18px;
       background-color: white;
       &:focus, &:hover {
         outline: none;

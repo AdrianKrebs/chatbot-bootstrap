@@ -1,10 +1,5 @@
 <template name="message">
     <div class="message-wrapper {{user}}">
-        {{#if userIsBot user}}
-        <div class="avatar">
-            <img src="/images/sample_avatar.png" alt="" class="img_bot "/>
-        </div>
-        {{/if}}
         <div class="text">
             {{#if image}}
             <img src="{{image}}" class="message_image"/>

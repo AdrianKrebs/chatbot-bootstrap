@@ -5,6 +5,7 @@ import './newchat.html';
 
 Template.newchat.onCreated(function () {
     $('.spinner').hide();
+    $('header').hide();
 });
 
 Template.newchat.helpers({});

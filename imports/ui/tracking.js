@@ -7,6 +7,7 @@ import './tracking.html';
 
 Template.tracking.onCreated(function () {
     $('.spinner').hide();
+    $('header').hide();
 });
 
 Template.tracking.events({
