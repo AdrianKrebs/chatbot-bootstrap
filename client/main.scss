@@ -13,7 +13,9 @@ html, body, input, p, h1, h2, hr {
 
 /* CSS declarations go here */
 body {
-  font-family: Helvetica, Arial sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 26px;
 }
